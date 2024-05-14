@@ -8,3 +8,4 @@ CREATE TABLE IF NOT EXISTS "record" (
 );
 
 ALTER TABLE "record" ADD FOREIGN KEY ("identityNumber") REFERENCES "patient" ("identityNumber");
+ALTER TABLE "record" ADD FOREIGN KEY ("nip") REFERENCES "user" ("nip");
