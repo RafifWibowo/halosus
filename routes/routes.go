@@ -21,6 +21,7 @@ func Init() *gin.Engine {
 			it := user.Group("/it")
 			{
 				it.POST("/register", userController.CreateIT)
+				it.POST("/login", userController.ITLogin)
 			}
 		}
 	}
