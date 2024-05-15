@@ -5,6 +5,5 @@ CREATE TABLE IF NOT EXISTS "user" (
     "password" varchar(255),
     "identityCardScanning" varchar(255),
     "createdAt" timestamp NOT NULL,
-    "updatedAt" timestamp NOT NULL,
-    "deletedAt" timestamp
+    "updatedAt" timestamp NOT NULL
 );
