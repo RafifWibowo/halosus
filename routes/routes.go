@@ -23,6 +23,13 @@ func Init() *gin.Engine {
 				it.POST("/register", userController.CreateIT)
 				it.POST("/login", userController.ITLogin)
 			}
+			nurse := user.Group("/nurse")
+			{
+				nurse.POST("/register", userController.CreateNurse)
+				nurse.PUT("/:userId", userController.UpdateNurse)
+				nurse.DELETE("/:userId", userController.DeleteNurse)
+				nurse.POST("/:userId/access", userController.GrantNurseAccess)
+			}
 		}
 	}
 

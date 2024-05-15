@@ -2,6 +2,7 @@ package helper
 
 import (
 	"math"
+	"regexp"
 	"time"
 )
 
@@ -12,6 +13,11 @@ func ValidateString(str string, min int, max int) bool {
 	return true
 }
 
+func ValidateURL(url string) bool {
+	regex := regexp.MustCompile(`^(https?):\/\/[^\s/$.?#].[^\s]*$`)
+	return regex.MatchString(url)
+}
+
 func ValidateNip(nip int64, role int) bool {
 	gender := getGenderCodeFromNip(nip)
 	year :=  getYearFromNip(nip)
@@ -20,7 +26,7 @@ func ValidateNip(nip int64, role int) bool {
 	if countDigits(nip) != 13 {
 		return false
 	}
-	if getRoleCodeFromNip(nip) != role{
+	if GetRoleCodeFromNip(nip) != role{
 		return false
 	}
 	if !checkGenderCode(gender) {
@@ -58,7 +64,7 @@ func checkGenderCode(num int) bool {
 	return num == 1 || num == 2
 }
 
-func getRoleCodeFromNip(nip int64) int {
+func GetRoleCodeFromNip(nip int64) int {
 	divisor := int64(math.Pow(10, 10))
 	code := nip/divisor
 	return int(code)
